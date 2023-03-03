@@ -1,4 +1,4 @@
-package com.lsz.sequence;
+package com.lsz.framework.sequence;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

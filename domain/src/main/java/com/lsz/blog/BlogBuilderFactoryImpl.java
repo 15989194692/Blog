@@ -1,7 +1,7 @@
 package com.lsz.blog;
 
-import com.lsz.sequence.SequenceService;
-import com.lsz.sequence.SequenceTypeEnum;
+import com.lsz.framework.sequence.SequenceService;
+import com.lsz.framework.sequence.SequenceTypeEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

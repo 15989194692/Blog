@@ -1,6 +1,6 @@
 package com.lsz.controller.sequence;
 
-import com.lsz.sequence.SequenceRepository;
+import com.lsz.framework.sequence.SequenceRepository;
 import org.springframework.stereotype.Repository;
 
 /**

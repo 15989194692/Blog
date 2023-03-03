@@ -1,4 +1,4 @@
-package com.lsz.valueobject;
+package com.lsz.framework.valueobject;
 
 import java.util.Objects;
 

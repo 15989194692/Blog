@@ -1,6 +1,7 @@
 package com.lsz.blog;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 /**
@@ -15,6 +16,7 @@ public interface BlogDtoAssembler {
 
     BlogDtoAssembler INSTANCE = Mappers.getMapper(BlogDtoAssembler.class);
 
+    @Mapping(target = "userId", source = "userId.id")
     CreateBlogDto toCreateBlogDto(Blog blog);
 
 

@@ -1,4 +1,4 @@
-package com.lsz.sequence;
+package com.lsz.framework.sequence;
 
 public enum SequenceTypeEnum {
 

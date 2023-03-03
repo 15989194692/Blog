@@ -1,8 +1,8 @@
 package com.lsz.blog;
 
-import com.lsz.valueobject.Day;
-import com.lsz.valueobject.UserId;
-import org.junit.Assert;
+import com.lsz.framework.domain.AggregateRoot;
+import com.lsz.framework.valueobject.Day;
+import com.lsz.framework.valueobject.UserId;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,7 +16,7 @@ import java.util.Objects;
  * @Date 2023/3/2 下午11:00
  * @Version 1.0.0
  **/
-public class Blog {
+public class Blog extends AggregateRoot {
 
     private String blogId;
 
@@ -28,21 +28,18 @@ public class Blog {
 
     private BlogStatusEnum status;
 
+    // TODO 将comment从blog中移出
     private List<Comment> commentList;
 
-    private Day gmtCreate;
-
-    private Day gmtModified;
-
     public Blog(UserId userId, Day gmtCreate, Day gmtModified) {
+        super(gmtCreate, gmtModified);
         this.userId = userId;
-        this.gmtCreate = gmtCreate;
-        this.gmtModified = gmtModified;
+
     }
 
     public void addComment(String commentContent, String userId) {
         // 发布状态的帖子才可以评论
-        Assert.assertTrue(isPublish());
+//        Assert.assertTrue(isPublish());
         Date now = new Date();
         Comment comment = new Comment(userId, this.blogId, Day.of(now), Day.of(now));
         comment.publish();
@@ -72,7 +69,19 @@ public class Blog {
         this.status = status;
     }
 
+    public String getBlogId() {
+        return blogId;
+    }
 
+    public UserId getUserId() {
+        return userId;
+    }
 
+    public String getBlogTitle() {
+        return blogTitle;
+    }
 
+    public String getBlogContent() {
+        return blogContent;
+    }
 }

@@ -1,4 +1,4 @@
-package com.lsz.policy;
+package com.lsz.framework.policy;
 
 /**
  * @ClassName EncodePolicy

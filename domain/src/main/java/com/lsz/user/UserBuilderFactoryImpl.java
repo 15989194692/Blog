@@ -1,6 +1,6 @@
 package com.lsz.user;
 
-import com.lsz.sequence.SequenceService;
+import com.lsz.framework.sequence.SequenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

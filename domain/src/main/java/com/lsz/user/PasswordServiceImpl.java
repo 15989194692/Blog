@@ -4,7 +4,7 @@
  */
 package com.lsz.user;
 
-import com.lsz.policy.EncodePolicy;
+import com.lsz.framework.policy.EncodePolicy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

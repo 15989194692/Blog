@@ -1,7 +1,7 @@
 package com.lsz.blog;
 
-import com.lsz.valueobject.Day;
-import com.lsz.valueobject.UserId;
+import com.lsz.framework.valueobject.Day;
+import com.lsz.framework.valueobject.UserId;
 
 import java.util.Date;
 

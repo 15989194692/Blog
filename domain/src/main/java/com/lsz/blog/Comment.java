@@ -1,6 +1,6 @@
 package com.lsz.blog;
 
-import com.lsz.valueobject.Day;
+import com.lsz.framework.valueobject.Day;
 
 /**
  * @ClassName Comment

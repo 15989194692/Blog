@@ -4,7 +4,7 @@
  */
 package com.lsz.framework;
 
-import com.lsz.policy.EncodePolicy;
+import com.lsz.framework.policy.EncodePolicy;
 import org.springframework.stereotype.Component;
 import org.springframework.util.DigestUtils;
 

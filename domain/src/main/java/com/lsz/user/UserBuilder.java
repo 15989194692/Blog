@@ -1,10 +1,10 @@
 package com.lsz.user;
 
-import com.lsz.sequence.SequenceService;
-import com.lsz.sequence.SequenceTypeEnum;
-import com.lsz.valueobject.Day;
-import com.lsz.valueobject.Password;
-import com.lsz.valueobject.UserId;
+import com.lsz.framework.sequence.SequenceService;
+import com.lsz.framework.sequence.SequenceTypeEnum;
+import com.lsz.framework.valueobject.Day;
+import com.lsz.framework.valueobject.Password;
+import com.lsz.framework.valueobject.UserId;
 
 import java.util.Date;
 import java.util.Random;

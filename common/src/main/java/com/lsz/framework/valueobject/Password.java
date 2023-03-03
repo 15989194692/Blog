@@ -1,6 +1,4 @@
-package com.lsz.valueobject;
-
-import com.lsz.policy.EncodePolicy;
+package com.lsz.framework.valueobject;
 
 import java.util.Objects;
 

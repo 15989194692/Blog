@@ -1,8 +1,8 @@
 package com.lsz.persistence.user;
 
 import com.lsz.user.User;
-import com.lsz.valueobject.Password;
-import com.lsz.valueobject.UserId;
+import com.lsz.framework.valueobject.Password;
+import com.lsz.framework.valueobject.UserId;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
@@ -20,10 +20,10 @@ public interface UserDoConverter {
     UserDoConverter INSTANCE = Mappers.getMapper(UserDoConverter.class);
 
 
-    @Mapping(target = "userId", expression = "java(UserId.of(userDo.getUserId())")
-    @Mapping(target = "password", expression = "java(Password.of(userDo.getPassword())")
-    @Mapping(target = "gmtCreate", expression = "java(Day.of(userDo.getGmtCreate())")
-    @Mapping(target = "gmtModified", expression = "java(Day.of(userDo.getGmtModified())")
+    @Mapping(target = "userId", expression = "java(UserId.of(userDo.getUserId()))")
+    @Mapping(target = "password", expression = "java(Password.of(userDo.getPassword(), userDo.getSalt()))")
+    @Mapping(target = "gmtCreate", expression = "java(Day.of(userDo.getGmtCreate()))")
+    @Mapping(target = "gmtModified", expression = "java(Day.of(userDo.getGmtModified()))")
     User toEntity(UserDo userDo);
 
     @Mapping(target = "userId", source = "user.userId.id")

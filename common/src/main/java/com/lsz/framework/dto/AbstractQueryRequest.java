@@ -1,4 +1,4 @@
-package com.lsz.dto;
+package com.lsz.framework.dto;
 
 /**
  * @ClassName AbstractQueryRequest

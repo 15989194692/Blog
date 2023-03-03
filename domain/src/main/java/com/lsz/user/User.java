@@ -1,8 +1,9 @@
 package com.lsz.user;
 
-import com.lsz.valueobject.Day;
-import com.lsz.valueobject.Password;
-import com.lsz.valueobject.UserId;
+import com.lsz.framework.domain.AggregateRoot;
+import com.lsz.framework.valueobject.Day;
+import com.lsz.framework.valueobject.Password;
+import com.lsz.framework.valueobject.UserId;
 
 /**
  * @ClassName User
@@ -11,7 +12,7 @@ import com.lsz.valueobject.UserId;
  * @Date 2023/3/2 下午11:00
  * @Version 1.0.0
  **/
-public class User {
+public class User extends AggregateRoot {
 
     private UserId userId;
 
@@ -24,6 +25,7 @@ public class User {
     private Day gmtModified;
 
     public User(Day gmtCreate, Day gmtModified) {
+        super(gmtCreate, gmtModified);
         this.gmtCreate = gmtCreate;
         this.gmtModified = gmtModified;
     }

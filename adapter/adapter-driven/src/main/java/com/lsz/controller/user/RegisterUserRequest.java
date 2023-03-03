@@ -1,6 +1,6 @@
 package com.lsz.controller.user;
 
-import com.lsz.dto.AbstractWriteRequest;
+import com.lsz.framework.dto.AbstractWriteRequest;
 
 /**
  * @ClassName RegisterUserRequest
