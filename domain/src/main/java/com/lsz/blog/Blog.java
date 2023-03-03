@@ -2,8 +2,12 @@ package com.lsz.blog;
 
 import com.lsz.valueobject.Day;
 import com.lsz.valueobject.UserId;
+import org.junit.Assert;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @ClassName Blog
@@ -34,6 +38,18 @@ public class Blog {
         this.userId = userId;
         this.gmtCreate = gmtCreate;
         this.gmtModified = gmtModified;
+    }
+
+    public void addComment(String commentContent, String userId) {
+        // 发布状态的帖子才可以评论
+        Assert.assertTrue(isPublish());
+        Date now = new Date();
+        Comment comment = new Comment(userId, this.blogId, Day.of(now), Day.of(now));
+        comment.publish();
+        if (Objects.isNull(commentList)) {
+            commentList = new ArrayList<>();
+        }
+        this.commentList.add(comment);
     }
 
     public boolean isPublish() {

@@ -12,5 +12,5 @@ public interface BlogRepository {
 
     boolean save(Blog blog);
 
-
+    Blog queryById(String blogId);
 }

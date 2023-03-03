@@ -17,4 +17,7 @@ public interface BlogDtoAssembler {
 
     CreateBlogDto toCreateBlogDto(Blog blog);
 
+
+    CommentBlogDto toCommentBlogDto(Blog blog);
+
 }

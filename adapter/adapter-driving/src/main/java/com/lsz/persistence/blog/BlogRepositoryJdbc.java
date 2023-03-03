@@ -18,4 +18,9 @@ public class BlogRepositoryJdbc implements BlogRepository {
     public boolean save(Blog blog) {
         return false;
     }
+
+    @Override
+    public Blog queryById(String blogId) {
+        return null;
+    }
 }

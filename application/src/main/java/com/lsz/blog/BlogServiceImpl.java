@@ -30,4 +30,12 @@ public class BlogServiceImpl implements BlogService {
         blogRepository.save(blog);
         return BlogDtoAssembler.INSTANCE.toCreateBlogDto(blog);
     }
+
+    @Override
+    public CommentBlogDto commentBlog(CommentBlogCommand command) {
+        Blog blog = blogRepository.queryById(command.getBlogId());
+        blog.addComment(command.getCommentContent(), command.getUserId());
+        blogRepository.save(blog);
+        return BlogDtoAssembler.INSTANCE.toCommentBlogDto(blog);
+    }
 }

@@ -12,4 +12,7 @@ public interface BlogService {
 
     CreateBlogDto createBlog(CreateBlogCommand command);
 
+
+    CommentBlogDto commentBlog(CommentBlogCommand command);
+
 }
