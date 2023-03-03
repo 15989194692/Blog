@@ -19,6 +19,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserBuilderFactory userBuilderFactory;
 
+    @Autowired
+    private PasswordService passwordService;
+
     public RegisterUserDto registerUser(RegisterUserCommand registerUserCommand) {
         User user = userBuilderFactory.builder()
                 .userName(registerUserCommand.getUserName())
@@ -27,4 +30,13 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
         return UserDtoAssembler.INSTANCE.toRegisterUserDto(user);
     }
+
+    @Override
+    public UserLoginDto login(UserLoginCommand command) {
+        User user = userRepository.queryById(command.getUserId());
+        passwordService.checkPassword(command.getPassword(), user);
+        return null;
+    }
+
+
 }

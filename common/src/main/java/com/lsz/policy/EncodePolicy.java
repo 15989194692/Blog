@@ -9,7 +9,5 @@ package com.lsz.policy;
  **/
 public interface EncodePolicy<L, R> {
 
-    L decode(R r);
-
     R encode(L l);
 }

@@ -12,4 +12,7 @@ public interface UserService {
 
     RegisterUserDto registerUser(RegisterUserCommand registerUserCommand);
 
+
+    UserLoginDto login(UserLoginCommand command);
+
 }

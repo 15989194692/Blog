@@ -1,7 +1,6 @@
 package com.lsz.user;
 
 import com.lsz.sequence.SequenceService;
-import com.lsz.sequence.SequenceTypeEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,9 +17,11 @@ public class UserBuilderFactoryImpl implements UserBuilderFactory {
     @Autowired
     private SequenceService sequenceService;
 
+    @Autowired
+    private PasswordService passwordService;
+
     @Override
     public UserBuilder builder() {
-        String userId = sequenceService.generateUniqueId(SequenceTypeEnum.USER_ID);
-        return new UserBuilder(userId);
+        return new UserBuilder(sequenceService, passwordService);
     }
 }

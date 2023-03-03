@@ -15,12 +15,20 @@ public class Password {
 
     private final String password;
 
-    private Password(String password) {
+    private final String salt;
+
+    private Password(String password, String salt) {
         this.password = password;
+        this.salt = salt;
     }
 
-    public static Password of(String password) {
-        return new Password(password);
+    public static Password of(String password, String salt) {
+        return new Password(password, salt);
+    }
+
+
+    public boolean isSamePassword(String anotherPassword) {
+        return Objects.equals(password, anotherPassword);
     }
 
     public boolean checkPassword(String anotherPassword) {
@@ -29,5 +37,9 @@ public class Password {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getSalt() {
+        return salt;
     }
 }

@@ -21,4 +21,9 @@ public class UserRepositoryJdbc implements UserRepository {
 
         return false;
     }
+
+    @Override
+    public User queryById(String userId) {
+        return null;
+    }
 }

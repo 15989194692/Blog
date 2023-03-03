@@ -28,7 +28,9 @@ public class User {
         this.gmtModified = gmtModified;
     }
 
-
+    public boolean isSamePassword(String anotherPassword) {
+        return password.isSamePassword(anotherPassword);
+    }
 
 
     public UserId getUserId() {

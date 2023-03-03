@@ -11,4 +11,6 @@ public interface UserRepository {
 
     boolean save(User user);
 
+    User queryById(String userId);
+
 }

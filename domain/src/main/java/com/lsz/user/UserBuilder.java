@@ -1,10 +1,13 @@
 package com.lsz.user;
 
+import com.lsz.sequence.SequenceService;
+import com.lsz.sequence.SequenceTypeEnum;
 import com.lsz.valueobject.Day;
 import com.lsz.valueobject.Password;
 import com.lsz.valueobject.UserId;
 
 import java.util.Date;
+import java.util.Random;
 
 /**
  * @ClassName UserBuilder
@@ -15,14 +18,24 @@ import java.util.Date;
  **/
 public class UserBuilder {
 
-    private final String userId;
+    private static final long SEED = 10000;
+
+    private static final Random random = new Random(SEED);
+
+    private String userId;
 
     private String userName;
 
     private String password;
 
-    public UserBuilder(String userId) {
-        this.userId = userId;
+    private final SequenceService sequenceService;
+
+
+    private final PasswordService passwordService;
+
+    public UserBuilder(SequenceService sequenceService, PasswordService passwordService) {
+        this.sequenceService = sequenceService;
+        this.passwordService = passwordService;
     }
 
     public UserBuilder userName(String userName) {
@@ -39,11 +52,21 @@ public class UserBuilder {
     public User build() {
         Date now = new Date();
         User user = new User(Day.of(now), Day.of(now));
+        user.setUserId(UserId.of(sequenceService.generateUniqueId(SequenceTypeEnum.USER_ID)));
         user.setUserName(userName);
         // 对密码进行编码
-        user.setPassword(Password.of(password));
+        String salt = String.valueOf(random.nextInt());
+        String encryptPassword = encrypt(password, salt);
+        user.setPassword(Password.of(encryptPassword, salt));
+
         user.setUserId(UserId.of(userId));
         return user;
     }
+
+    private String encrypt(String password, String salt) {
+        return passwordService.encryptPassword(password, salt);
+    }
+
+
 
 }
