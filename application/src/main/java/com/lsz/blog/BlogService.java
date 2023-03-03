@@ -8,4 +8,8 @@ package com.lsz.blog;
  * @Version 1.0.0
  **/
 public interface BlogService {
+
+
+    CreateBlogDto createBlog(CreateBlogCommand command);
+
 }

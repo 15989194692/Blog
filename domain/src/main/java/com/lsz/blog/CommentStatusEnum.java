@@ -1,15 +1,16 @@
 package com.lsz.blog;
 
-public enum BlogTypeEnum {
-
+public enum CommentStatusEnum {
     PUBLISH("PUBLISH"),
 
-    DELETE("DELETE"),
+
 
     ;
+
     private final String code;
 
-    BlogTypeEnum(String code) {
+
+    CommentStatusEnum(String code) {
         this.code = code;
     }
 

@@ -4,6 +4,8 @@ public enum SequenceTypeEnum {
 
     USER_ID("USER_ID"),
 
+    BLOG_ID("BLOG_ID"),
+
     ;
 
     private final String code;

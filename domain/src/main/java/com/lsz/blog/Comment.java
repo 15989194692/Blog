@@ -13,4 +13,5 @@ public class Comment {
 
     private String commentContent;
 
+    private CommentStatusEnum status;
 }
