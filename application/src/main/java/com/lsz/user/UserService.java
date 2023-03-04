@@ -15,4 +15,7 @@ public interface UserService {
 
     UserLoginDto login(UserLoginCommand command);
 
+
+    UserDto queryUser(String userId);
+
 }

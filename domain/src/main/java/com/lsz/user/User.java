@@ -24,6 +24,9 @@ public class User extends AggregateRoot {
 
     private Day gmtModified;
 
+    public User() {
+    }
+
     public User(Day gmtCreate, Day gmtModified) {
         super(gmtCreate, gmtModified);
         this.gmtCreate = gmtCreate;
@@ -57,13 +60,5 @@ public class User extends AggregateRoot {
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public Day getGmtCreate() {
-        return gmtCreate;
-    }
-
-    public Day getGmtModified() {
-        return gmtModified;
     }
 }

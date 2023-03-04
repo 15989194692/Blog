@@ -17,6 +17,10 @@ public class AggregateRoot extends AuditableEntity {
      */
     private Long version;
 
+    public AggregateRoot() {
+
+    }
+
     public AggregateRoot(Day gmtCreate, Day gmtModified) {
         super(gmtCreate, gmtModified);
     }

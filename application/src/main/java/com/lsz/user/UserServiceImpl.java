@@ -38,5 +38,13 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
+    @Override
+    public UserDto queryUser(String userId) {
+        User user = userRepository.queryById(userId);
+        UserDto userDto = new UserDto();
+        userDto.setUserName(user.getUserName());
+        return userDto;
+    }
+
 
 }

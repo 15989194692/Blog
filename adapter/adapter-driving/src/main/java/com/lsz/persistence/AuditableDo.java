@@ -31,4 +31,6 @@ public class AuditableDo {
     public void setGmtModified(Date gmtModified) {
         this.gmtModified = gmtModified;
     }
+
+
 }

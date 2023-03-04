@@ -23,6 +23,10 @@ public class AuditableEntity {
 
     private ChangingStatusEnum changingStatus = ChangingStatusEnum.NEW;
 
+    public AuditableEntity() {
+
+    }
+
     public AuditableEntity(Day gmtCreate, Day gmtModified) {
         this.gmtCreate = gmtCreate;
         this.gmtModified = gmtModified;
@@ -69,5 +73,17 @@ public class AuditableEntity {
 
     public Day getGmtModified() {
         return gmtModified;
+    }
+
+    public void setGmtCreate(Day gmtCreate) {
+        this.gmtCreate = gmtCreate;
+    }
+
+    public void setGmtModified(Day gmtModified) {
+        this.gmtModified = gmtModified;
+    }
+
+    public ChangingStatusEnum getChangingStatus() {
+        return changingStatus;
     }
 }

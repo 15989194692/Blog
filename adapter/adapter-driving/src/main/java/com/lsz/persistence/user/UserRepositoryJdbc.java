@@ -2,6 +2,7 @@ package com.lsz.persistence.user;
 
 import com.lsz.user.User;
 import com.lsz.user.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -14,7 +15,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class UserRepositoryJdbc implements UserRepository {
 
-
+    @Autowired
+    private UserDoMapper userDoMapper;
 
     public boolean save(User user) {
         UserDo userDo = UserDoConverter.INSTANCE.toDo(user);
@@ -24,6 +26,7 @@ public class UserRepositoryJdbc implements UserRepository {
 
     @Override
     public User queryById(String userId) {
-        return null;
+        UserDo userDo = userDoMapper.selectByUserId(userId);
+        return UserDoConverter.INSTANCE.toEntity(userDo);
     }
 }

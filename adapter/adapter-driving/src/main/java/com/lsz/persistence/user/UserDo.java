@@ -13,6 +13,8 @@ import java.util.Date;
  **/
 public class UserDo extends AuditableDo {
 
+    private Long id;
+
     private String userId;
 
     private String password;
@@ -52,4 +54,14 @@ public class UserDo extends AuditableDo {
     public void setSalt(String salt) {
         this.salt = salt;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
 }
