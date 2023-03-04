@@ -28,6 +28,7 @@ public interface UserDoConverter {
 
     @Mapping(target = "userId", source = "user.userId.id")
     @Mapping(target = "password", source = "user.password.password")
+    @Mapping(target = "salt", source = "user.password.salt")
     @Mapping(target = "gmtCreate", source = "user.gmtCreate.date")
     @Mapping(target = "gmtModified", source = "user.gmtModified.date")
     UserDo toDo(User user);

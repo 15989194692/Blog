@@ -2,8 +2,6 @@ package com.lsz.persistence.user;
 
 import com.lsz.persistence.AuditableDo;
 
-import java.util.Date;
-
 /**
  * @ClassName UserDo
  * @Description TODO

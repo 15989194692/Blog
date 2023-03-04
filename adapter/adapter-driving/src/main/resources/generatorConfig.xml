@@ -49,7 +49,7 @@
         </javaTypeResolver>
 
         <!-- 生成模型（实体）的包名和位置-->
-        <javaModelGenerator targetPackage="com.ajz.course.ddao.model" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.lsz.persistence" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
@@ -66,7 +66,7 @@
         </javaClientGenerator>
 
         <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
-        <table tableName="user" domainObjectName="UserDo">
+        <table tableName="sequence" domainObjectName="sequenceDo">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
         <!-- table可以有多个,每个数据库中的表都可以写一个table，tableName表示要匹配的数据库表,也可以在tableName属性中通过使用%通配符来匹配所有数据库表,只有匹配的表才会自动生成文件 -->

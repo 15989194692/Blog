@@ -22,7 +22,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    public RegisterUserDto registerUser(RegisterUserRequest request) {
+    @PostMapping("/registerUser")
+    public RegisterUserDto registerUser(@RequestBody RegisterUserRequest request) {
         return userService.registerUser(UserCommandAssembler.INSTANCE.toRegisterUserCommand(request));
     }
 

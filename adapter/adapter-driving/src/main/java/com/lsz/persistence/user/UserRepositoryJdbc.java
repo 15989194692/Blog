@@ -20,8 +20,7 @@ public class UserRepositoryJdbc implements UserRepository {
 
     public boolean save(User user) {
         UserDo userDo = UserDoConverter.INSTANCE.toDo(user);
-
-        return false;
+        return userDoMapper.insert(userDo) == 1;
     }
 
     @Override

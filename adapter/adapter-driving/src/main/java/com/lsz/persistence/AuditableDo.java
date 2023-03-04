@@ -4,13 +4,14 @@
  */
 package com.lsz.persistence;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * @author lishuzeng
  * @version : AuditableDo.java, v 0.1 2023年03月03日 下午3:40 lishuzeng Exp $
  */
-public class AuditableDo {
+public class AuditableDo implements Serializable {
 
     private Date gmtCreate;
 
@@ -33,4 +34,24 @@ public class AuditableDo {
     }
 
 
+    /**
+     * @see Object#equals(Object)
+     *//*
+    @Override
+    public boolean equals(Object obj) {
+        return EqualsBuilder.reflectionEquals(this, obj);
+    }
+
+    *//**
+     * @see Object#hashCode()
+     *//*
+    @Override
+    public int hashCode() {
+        return HashCodeBuilder.reflectionHashCode(this, false);
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
+    }*/
 }

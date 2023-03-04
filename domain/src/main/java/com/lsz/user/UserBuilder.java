@@ -58,8 +58,6 @@ public class UserBuilder {
         String salt = String.valueOf(random.nextInt());
         String encryptPassword = encrypt(password, salt);
         user.setPassword(Password.of(encryptPassword, salt));
-
-        user.setUserId(UserId.of(userId));
         return user;
     }
 
