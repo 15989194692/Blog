@@ -18,6 +18,8 @@ public class UserRepositoryJdbc implements UserRepository {
     @Autowired
     private UserDoMapper userDoMapper;
 
+
+
     public boolean save(User user) {
         UserDo userDo = UserDoConverter.INSTANCE.toDo(user);
         return userDoMapper.insert(userDo) == 1;

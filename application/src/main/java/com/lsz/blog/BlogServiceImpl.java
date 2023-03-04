@@ -1,7 +1,18 @@
 package com.lsz.blog;
 
+import com.lsz.blog.assembler.BlogDtoAssembler;
+import com.lsz.blog.builder.BlogBuilderFactory;
+import com.lsz.blog.command.CommentBlogCommand;
+import com.lsz.blog.command.CreateBlogCommand;
+import com.lsz.blog.command.DeleteBlogCommand;
+import com.lsz.blog.domain.Blog;
+import com.lsz.blog.dto.*;
+import com.lsz.blog.query.BlogQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @ClassName BlogServiceImpl
@@ -34,8 +45,21 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public CommentBlogDto commentBlog(CommentBlogCommand command) {
         Blog blog = blogRepository.queryById(command.getBlogId());
-        blog.addComment(command.getCommentContent(), command.getUserId());
         blogRepository.save(blog);
         return BlogDtoAssembler.INSTANCE.toCommentBlogDto(blog);
+    }
+
+    @Override
+    public List<BlogDto> queryBlog(BlogQuery query) {
+        List<Blog> blogList = blogRepository.query(query);
+        return blogList.stream().map(BlogDtoAssembler.INSTANCE::toBlogDto).collect(Collectors.toList());
+    }
+
+    @Override
+    public DeleteBlogDto deleteBlog(DeleteBlogCommand command) {
+        Blog blog = blogRepository.queryById(command.getBlogId());
+        blog.delete(command.getUserId());
+        boolean success = blogRepository.save(blog);
+        return new DeleteBlogDto(success);
     }
 }

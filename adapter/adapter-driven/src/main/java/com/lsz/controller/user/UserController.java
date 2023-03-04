@@ -1,7 +1,7 @@
 package com.lsz.controller.user;
 
-import com.lsz.user.RegisterUserDto;
-import com.lsz.user.UserDto;
+import com.lsz.user.dto.RegisterUserDto;
+import com.lsz.user.dto.UserDto;
 import com.lsz.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,9 +29,7 @@ public class UserController {
 
     @GetMapping("/queryUser/{userId}")
     public UserDto queryUser(@PathVariable("userId") String userId) {
-        System.out.println("userId = " + userId);
         UserDto userDto = userService.queryUser(userId);
-        System.out.println("userDto = " + userDto);
         return userDto;
     }
 

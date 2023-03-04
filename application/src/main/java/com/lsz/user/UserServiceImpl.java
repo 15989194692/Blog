@@ -1,5 +1,11 @@
 package com.lsz.user;
 
+import com.lsz.user.assembler.UserDtoAssembler;
+import com.lsz.user.command.RegisterUserCommand;
+import com.lsz.user.command.UserLoginCommand;
+import com.lsz.user.dto.RegisterUserDto;
+import com.lsz.user.dto.UserDto;
+import com.lsz.user.dto.UserLoginDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,8 +49,8 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.queryById(userId);
         UserDto userDto = new UserDto();
         userDto.setUserName(user.getUserName());
-        return userDto;
+        userDto.setUserId(user.getUserId().getId());
+        return UserDtoAssembler.INSTANCE.toUserDto(user);
     }
-
 
 }

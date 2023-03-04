@@ -22,6 +22,10 @@ public class UserId {
         return new UserId(id);
     }
 
+    public boolean isSameId(String userId) {
+        return Objects.equals(id, userId);
+    }
+
     public String getId() {
         return id;
     }

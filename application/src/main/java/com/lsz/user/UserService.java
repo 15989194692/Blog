@@ -1,5 +1,11 @@
 package com.lsz.user;
 
+import com.lsz.user.command.RegisterUserCommand;
+import com.lsz.user.command.UserLoginCommand;
+import com.lsz.user.dto.RegisterUserDto;
+import com.lsz.user.dto.UserDto;
+import com.lsz.user.dto.UserLoginDto;
+
 /**
  * @ClassName UserService
  * @Description TODO

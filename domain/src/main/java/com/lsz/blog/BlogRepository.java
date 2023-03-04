@@ -1,5 +1,10 @@
 package com.lsz.blog;
 
+import com.lsz.blog.domain.Blog;
+import com.lsz.blog.query.BlogQuery;
+
+import java.util.List;
+
 /**
  * @ClassName BlogRepository
  * @Description TODO
@@ -9,8 +14,12 @@ package com.lsz.blog;
  **/
 public interface BlogRepository {
 
-
     boolean save(Blog blog);
 
     Blog queryById(String blogId);
+
+    List<Blog> query(BlogQuery query);
+
+
+
 }
