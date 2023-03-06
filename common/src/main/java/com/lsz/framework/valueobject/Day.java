@@ -25,6 +25,10 @@ public class Day {
         return new Day(date);
     }
 
+    public static Day now() {
+        return new Day(new Date());
+    }
+
     public Date getDate() {
         return date;
     }

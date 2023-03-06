@@ -4,9 +4,13 @@
  */
 package com.lsz.controller.blog.assembler;
 
+import com.lsz.blog.command.CommentBlogCommand;
 import com.lsz.blog.command.CreateBlogCommand;
 import com.lsz.blog.command.DeleteBlogCommand;
+import com.lsz.blog.command.DeleteBlogCommentCommand;
+import com.lsz.controller.blog.request.CommentBlogRequest;
 import com.lsz.controller.blog.request.CreateBlogRequest;
+import com.lsz.controller.blog.request.DeleteBlogCommentRequest;
 import com.lsz.controller.blog.request.DeleteBlogRequest;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -26,4 +30,7 @@ public interface BlogCommandAssembler {
 
     DeleteBlogCommand toDeleteBlogCommand(DeleteBlogRequest request);
 
+    CommentBlogCommand toCommentBlogCommand(CommentBlogRequest request);
+
+    DeleteBlogCommentCommand toDeleteBlogCommentCommand(DeleteBlogCommentRequest request);
 }

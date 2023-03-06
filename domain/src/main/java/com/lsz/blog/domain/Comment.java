@@ -4,6 +4,7 @@ import com.lsz.blog.enums.CommentStatusEnum;
 import com.lsz.framework.domain.AggregateRoot;
 import com.lsz.framework.valueobject.Day;
 import com.lsz.framework.valueobject.UserId;
+import org.springframework.util.Assert;
 
 /**
  * @ClassName Comment
@@ -28,10 +29,28 @@ public class Comment extends AggregateRoot {
 
     private CommentStatusEnum status = CommentStatusEnum.PUBLISH;
 
-    public Comment(UserId userId, String blogId, Day gmtCreate, Day gmtModified) {
+    public Comment(String commentId, UserId userId, String blogId, Day gmtCreate, Day gmtModified) {
         super(gmtCreate, gmtModified);
+        this.commentId = commentId;
         this.userId = userId;
         this.blogId = blogId;
+    }
+
+    public boolean isDelete() {
+        return status.isDelete();
+    }
+
+    public boolean isPublish() {
+        return status.isPublish();
+    }
+
+    public void deleteComment(String userId) {
+        Assert.isTrue(this.userId.isSameId(userId),
+                "only can delete your own comment, operate delete userId: " + userId
+                        + ", comment belong to userId: " + this.userId.getId());
+        Assert.isTrue(!isDelete(), "can not delete again, comment: " + this);
+        this.status = CommentStatusEnum.DELETE;
+        this.toUpdate();
     }
 
 

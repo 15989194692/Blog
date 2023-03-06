@@ -1,4 +1,4 @@
-package com.lsz.blog;
+package com.lsz.blog.validator;
 
 /**
  * @ClassName BlogValidator
@@ -8,5 +8,7 @@ package com.lsz.blog;
  * @Version 1.0.0
  **/
 public interface BlogValidator {
+
+    public boolean blogShouldBePublish(String blogId);
 
 }

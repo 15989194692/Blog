@@ -3,10 +3,8 @@ package com.lsz.blog;
 import com.lsz.blog.command.CommentBlogCommand;
 import com.lsz.blog.command.CreateBlogCommand;
 import com.lsz.blog.command.DeleteBlogCommand;
-import com.lsz.blog.dto.BlogDto;
-import com.lsz.blog.dto.CommentBlogDto;
-import com.lsz.blog.dto.CreateBlogDto;
-import com.lsz.blog.dto.DeleteBlogDto;
+import com.lsz.blog.command.DeleteBlogCommentCommand;
+import com.lsz.blog.dto.*;
 import com.lsz.blog.query.BlogQuery;
 
 import java.util.List;
@@ -31,5 +29,7 @@ public interface BlogService {
 
 
     DeleteBlogDto deleteBlog(DeleteBlogCommand command);
+
+    DeleteBlogCommentDto deleteBlogComment(DeleteBlogCommentCommand command);
 
 }

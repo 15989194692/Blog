@@ -6,6 +6,8 @@ public enum SequenceTypeEnum {
 
     BLOG_ID("BLOG_ID"),
 
+    COMMENT_ID("COMMENT_ID"),
+
     ;
 
     private final String code;

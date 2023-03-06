@@ -1,14 +1,10 @@
 package com.lsz.controller.blog;
 
 import com.lsz.blog.BlogService;
-import com.lsz.blog.dto.BlogDto;
-import com.lsz.blog.dto.CreateBlogDto;
-import com.lsz.blog.dto.DeleteBlogDto;
+import com.lsz.blog.dto.*;
 import com.lsz.controller.blog.assembler.BlogCommandAssembler;
 import com.lsz.controller.blog.assembler.BlogQueryAssembler;
-import com.lsz.controller.blog.request.CreateBlogRequest;
-import com.lsz.controller.blog.request.DeleteBlogRequest;
-import com.lsz.controller.blog.request.QueryBlogRequest;
+import com.lsz.controller.blog.request.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -47,4 +43,13 @@ public class BlogController {
         return blogService.deleteBlog(BlogCommandAssembler.INSTANCE.toDeleteBlogCommand(request));
     }
 
+    @PostMapping("/commentBlog")
+    public CommentBlogDto commentBlog(@RequestBody CommentBlogRequest request) {
+        return blogService.commentBlog(BlogCommandAssembler.INSTANCE.toCommentBlogCommand(request));
+    }
+
+    @PostMapping("/deleteBlogComment")
+    public DeleteBlogCommentDto deleteBlogComment(@RequestBody DeleteBlogCommentRequest request) {
+        return blogService.deleteBlogComment(BlogCommandAssembler.INSTANCE.toDeleteBlogCommentCommand(request));
+    }
 }

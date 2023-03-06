@@ -22,8 +22,8 @@ public class CommentDoConverterByHand implements CommentDoConverter {
 
     @Override
     public Comment toEntity(CommentDo commentDo) {
-        Comment comment = new Comment(UserId.of(commentDo.getUserId()), commentDo.getBlogId(),
-                Day.of(commentDo.getGmtCreate()), Day.of(commentDo.getGmtModified()));
+        Comment comment = new Comment(commentDo.getCommentId(), UserId.of(commentDo.getUserId()),
+                commentDo.getBlogId(), Day.of(commentDo.getGmtCreate()), Day.of(commentDo.getGmtModified()));
         comment.setCommentContent(commentDo.getCommentContent());
         comment.setStatus(CommentStatusEnum.valueOf(commentDo.getStatus()));
         comment.setParentCommentId(commentDo.getParentCommentId());

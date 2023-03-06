@@ -1,13 +1,17 @@
-package com.lsz.blog.command;
+/**
+ * Alipay.com Inc.
+ * Copyright (c) 2004-2023 All Rights Reserved.
+ */
+package com.lsz.controller.blog.request;
+
+import com.lsz.framework.dto.AbstractWriteRequest;
 
 /**
- * @ClassName CommentBlogCommand
- * @Description TODO
- * @Author lishuzeng
- * @Date 2023/3/3 上午9:14
- * @Version 1.0.0
- **/
-public class CommentBlogCommand {
+ * @author lishuzeng
+ * @version : CommentBlogRequest.java, v 0.1 2023年03月06日 上午10:40 lishuzeng Exp $
+ */
+public class CommentBlogRequest extends AbstractWriteRequest {
+
     private String blogId;
 
     private String userId;

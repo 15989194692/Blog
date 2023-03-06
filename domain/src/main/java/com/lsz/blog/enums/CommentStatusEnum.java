@@ -3,7 +3,7 @@ package com.lsz.blog.enums;
 public enum CommentStatusEnum {
     PUBLISH("PUBLISH"),
 
-
+    DELETE("DELETE"),
 
     ;
 
@@ -12,6 +12,14 @@ public enum CommentStatusEnum {
 
     CommentStatusEnum(String code) {
         this.code = code;
+    }
+
+    public boolean isDelete() {
+        return this == DELETE;
+    }
+
+    public boolean isPublish() {
+        return this == PUBLISH;
     }
 
     public String getCode() {
