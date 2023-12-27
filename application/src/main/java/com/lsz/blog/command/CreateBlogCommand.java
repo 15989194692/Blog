@@ -1,5 +1,7 @@
 package com.lsz.blog.command;
 
+import com.sun.istack.internal.NotNull;
+
 /**
  * @ClassName CreateBlogCommand
  * @Description TODO
@@ -10,12 +12,14 @@ package com.lsz.blog.command;
 public class CreateBlogCommand {
 
 
+    @NotNull
     private String blogTitle;
 
     private String blogContent;
 
     private String status;
 
+    @NotNull
     private String userId;
 
     public String getBlogTitle() {

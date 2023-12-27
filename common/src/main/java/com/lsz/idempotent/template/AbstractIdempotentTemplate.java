@@ -55,7 +55,6 @@ public abstract class AbstractIdempotentTemplate implements IdempotentTemplate {
                 return idempotentExecuteCallback.repeatExecute(request, idempotentInstructionAfterLock);
             }
 
-
             // 事务内执行业务操作和幂等
             return transactionTemplate.execute(action -> {
                 idempotentExecuteCallback.prepareInTransaction(request);

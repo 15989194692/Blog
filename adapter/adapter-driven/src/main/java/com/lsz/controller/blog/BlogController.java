@@ -6,11 +6,13 @@ import com.lsz.controller.blog.assembler.BlogCommandAssembler;
 import com.lsz.controller.blog.assembler.BlogQueryAssembler;
 import com.lsz.controller.blog.request.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -22,6 +24,7 @@ import java.util.List;
  **/
 @RestController
 @RequestMapping("/blog")
+@Validated
 public class BlogController {
 
     @Autowired
@@ -29,7 +32,7 @@ public class BlogController {
 
 
     @PostMapping("/createBlog")
-    public CreateBlogDto createBlog(@RequestBody CreateBlogRequest request) {
+    public CreateBlogDto createBlog(@Valid @RequestBody CreateBlogRequest request) {
         return blogService.createBlog(BlogCommandAssembler.INSTANCE.toCreateBlogCommand(request));
     }
 

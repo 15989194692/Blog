@@ -14,7 +14,9 @@ import com.lsz.blog.dto.*;
 import com.lsz.blog.query.BlogQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,6 +28,7 @@ import java.util.stream.Collectors;
  * @Version 1.0.0
  **/
 @Service
+@Validated
 public class BlogServiceImpl implements BlogService {
 
     @Autowired
@@ -42,7 +45,7 @@ public class BlogServiceImpl implements BlogService {
     private CommentRepository commentRepository;
 
     @Override
-    public CreateBlogDto createBlog(CreateBlogCommand command) {
+    public CreateBlogDto createBlog(@Valid CreateBlogCommand command) {
         Blog blog = blogBuilderFactory.builder()
                 .blogTitle(command.getBlogTitle())
                 .blogContent(command.getBlogContent())

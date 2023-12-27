@@ -26,6 +26,7 @@ public interface BlogDtoAssembler {
     CreateBlogDto toCreateBlogDto(Blog blog);
 
 
+    @Mapping(target = "userId", source = "blog.userId.id")
     CommentBlogDto toCommentBlogDto(Blog blog);
 
 
