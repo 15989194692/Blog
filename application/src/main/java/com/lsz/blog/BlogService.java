@@ -7,6 +7,7 @@ import com.lsz.blog.command.DeleteBlogCommentCommand;
 import com.lsz.blog.dto.*;
 import com.lsz.blog.query.BlogQuery;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -19,7 +20,7 @@ import java.util.List;
 public interface BlogService {
 
 
-    CreateBlogDto createBlog(CreateBlogCommand command);
+    CreateBlogDto createBlog(@Valid CreateBlogCommand command);
 
 
     CommentBlogDto commentBlog(CommentBlogCommand command);

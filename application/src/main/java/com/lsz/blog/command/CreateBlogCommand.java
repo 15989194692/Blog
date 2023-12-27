@@ -1,6 +1,7 @@
 package com.lsz.blog.command;
 
-import com.sun.istack.internal.NotNull;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * @ClassName CreateBlogCommand
