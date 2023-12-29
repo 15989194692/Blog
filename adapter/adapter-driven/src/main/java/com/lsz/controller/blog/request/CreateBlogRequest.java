@@ -2,6 +2,8 @@ package com.lsz.controller.blog.request;
 
 import com.lsz.framework.dto.AbstractWriteRequest;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * @ClassName CreateBlogRequest
  * @Description TODO
@@ -15,6 +17,7 @@ public class CreateBlogRequest extends AbstractWriteRequest {
 
     private String blogContent;
 
+    @NotNull
     private String userId;
 
     private String status;
