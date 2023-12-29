@@ -1,6 +1,5 @@
 package com.lsz.idempotent;
 
-import com.sun.istack.internal.NotNull;
 
 /**
   *@ClassName TestApplication

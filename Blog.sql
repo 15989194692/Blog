@@ -53,4 +53,4 @@ create table `comment` (
 
     PRIMARY  KEY (`id`),
     UNIQUE INDEX uk_blog_id(`comment_id`)
-)
+);

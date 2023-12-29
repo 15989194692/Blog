@@ -1,6 +1,7 @@
 package com.lsz.idempotent;
 
-import com.sun.istack.internal.NotNull;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * @ClassName TestCommand
