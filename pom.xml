@@ -145,6 +145,19 @@
                 <version>2.0.1</version>
             </dependency>
             <!-- mybatis -->
+
+            <!-- java类解析工具 -->
+            <dependency>
+                <groupId>com.github.javaparser</groupId>
+                <artifactId>javaparser-core</artifactId>
+                <version>3.26.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.javaparser</groupId>
+                <artifactId>javaparser-symbol-solver-core</artifactId>
+                <version>3.26.1</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

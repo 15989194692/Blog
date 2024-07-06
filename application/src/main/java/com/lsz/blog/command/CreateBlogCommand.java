@@ -13,12 +13,25 @@ import javax.validation.constraints.NotNull;
 public class CreateBlogCommand {
 
 
+    /**
+     * 博客标题
+     */
     @NotNull
     private String blogTitle;
 
+    /**
+     * 博客内容
+     */
     private String blogContent;
 
+    /**
+     * 博客状态
+     */
     private String status;
+
+    /**
+     * 用户id
+     */
     @NotNull
     private String userId;
 

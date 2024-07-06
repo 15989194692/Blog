@@ -20,6 +20,12 @@ import java.util.List;
 public interface BlogService {
 
 
+    /**
+     * 创建博客
+     *
+     * @param command 命令
+     * @return 博客
+     */
     CreateBlogDto createBlog(@Valid CreateBlogCommand command);
 
 

@@ -9,14 +9,29 @@ package com.lsz.blog.dto;
  **/
 public class CreateBlogDto {
 
+    /**
+     * 博客id
+     */
     private String blogId;
 
+    /**
+     * 博客标题
+     */
     private String blogTitle;
 
+    /**
+     * 博客内容
+     */
     private String blogContent;
 
+    /**
+     * 博客状态
+     */
     private String status;
 
+    /**
+     * 用户id
+     */
     private String userId;
 
     public String getBlogId() {
