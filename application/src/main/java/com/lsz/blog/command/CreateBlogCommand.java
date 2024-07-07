@@ -1,7 +1,10 @@
 package com.lsz.blog.command;
 
 
+import com.lsz.blog.dto.BlogDto;
+
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * @ClassName CreateBlogCommand
@@ -35,6 +38,8 @@ public class CreateBlogCommand {
     @NotNull
     private String userId;
 
+    private List<BlogDto> test;
+
     public String getBlogTitle() {
         return blogTitle;
     }
@@ -65,5 +70,13 @@ public class CreateBlogCommand {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public List<BlogDto> getTest() {
+        return test;
+    }
+
+    public void setTest(List<BlogDto> test) {
+        this.test = test;
     }
 }
