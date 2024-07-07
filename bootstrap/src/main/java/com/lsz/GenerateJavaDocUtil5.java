@@ -15,6 +15,7 @@ import com.github.javaparser.symbolsolver.JavaSymbolSolver;
 import com.github.javaparser.symbolsolver.resolution.typesolvers.CombinedTypeSolver;
 import com.github.javaparser.symbolsolver.resolution.typesolvers.JavaParserTypeSolver;
 import com.github.javaparser.symbolsolver.resolution.typesolvers.ReflectionTypeSolver;
+import com.lsz.blog.BlogService;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -69,10 +70,11 @@ public class GenerateJavaDocUtil5 {
         JavaSymbolSolver symbolSolver = new JavaSymbolSolver(typeSolver);
         javaParser.getParserConfiguration().setSymbolResolver(symbolSolver);
 
-        // 输入源代码文件路径
-        File sourceFile = new File(userDir, "application/src/main/java/com/lsz/blog/BlogService.java");
 
         try {
+            // 输入源代码文件路径
+            File sourceFile = getClassFile(BlogService.class);
+
             // 解析源代码文件
             CompilationUnit cu = javaParser.parse(sourceFile).getResult().get();
 
