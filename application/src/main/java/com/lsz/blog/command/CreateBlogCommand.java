@@ -3,6 +3,8 @@ package com.lsz.blog.command;
 
 import com.lsz.blog.dto.BlogDto;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -25,11 +27,13 @@ public class CreateBlogCommand {
     /**
      * 博客内容
      */
+    @NotEmpty
     private String blogContent;
 
     /**
      * 博客状态
      */
+    @NotBlank
     private String status;
 
     /**

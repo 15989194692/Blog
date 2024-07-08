@@ -17,6 +17,9 @@ import com.github.javaparser.symbolsolver.resolution.typesolvers.JavaParserTypeS
 import com.github.javaparser.symbolsolver.resolution.typesolvers.ReflectionTypeSolver;
 import com.lsz.blog.BlogService;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -34,19 +37,28 @@ import java.util.Set;
 
 public class GenerateJavaDocUtil5 {
 
-    private static Set<String> primitiveTypes = new HashSet<>();
+    private static final Set<String> PRIMITIVE_TYPES = new HashSet<>();
+
+    private static final Set<String> NON_NULL_CLASS_NAMES = new HashSet<>();
+
+    private static final String NON_NULL = "Y";
+    private static final String CAN_BE_NULL = "N";
 
     static {
-        primitiveTypes.add("byte");
-        primitiveTypes.add("short");
-        primitiveTypes.add("int");
-        primitiveTypes.add("long");
-        primitiveTypes.add("float");
-        primitiveTypes.add("double");
-        primitiveTypes.add("char");
-        primitiveTypes.add("boolean");
-        primitiveTypes.add("void");
-        primitiveTypes.add("String");  // Add common class types if needed
+        PRIMITIVE_TYPES.add("byte");
+        PRIMITIVE_TYPES.add("short");
+        PRIMITIVE_TYPES.add("int");
+        PRIMITIVE_TYPES.add("long");
+        PRIMITIVE_TYPES.add("float");
+        PRIMITIVE_TYPES.add("double");
+        PRIMITIVE_TYPES.add("char");
+        PRIMITIVE_TYPES.add("boolean");
+        PRIMITIVE_TYPES.add("void");
+        PRIMITIVE_TYPES.add("String");  // Add common class types if needed
+
+        NON_NULL_CLASS_NAMES.add(NotNull.class.getSimpleName());
+        NON_NULL_CLASS_NAMES.add(NotEmpty.class.getSimpleName());
+        NON_NULL_CLASS_NAMES.add(NotBlank.class.getSimpleName());
     }
 
     private static JavaParser javaParser = new JavaParser();
@@ -144,7 +156,7 @@ public class GenerateJavaDocUtil5 {
     }
 
     private static boolean isPrimitive(String type) {
-        return primitiveTypes.contains(type);
+        return PRIMITIVE_TYPES.contains(type);
     }
 
     private static void parseType(Type type, StringBuilder sb) {
@@ -194,13 +206,18 @@ public class GenerateJavaDocUtil5 {
                 classComment.ifPresent(comment -> sb.append(comment.getContent().trim()).append("\n\n"));
 
                 // 提取 POJO 字段注释
-                sb.append("| Field | Type | Description |\n");
-                sb.append("|-------|------|-------------|\n");
+                sb.append("| Field | Type | NonNull | Description |\n");
+                sb.append("|-------|------|---------|-------------|\n");
                 pojoCls.findAll(FieldDeclaration.class).forEach(field -> {
                     String fieldName = field.getVariable(0).getNameAsString();
                     String fieldType = field.getCommonType().asString();
                     String fieldDescription = field.getJavadocComment().map(Comment::getContent).orElse("No description available.");
-                    sb.append("| ").append(format(fieldName)).append(" | ").append(format(fieldType)).append(" | ").append(format(fieldDescription)).append(" |\n");
+                    boolean isNonNull = isParamRequired(field);
+                    sb.append("| ").append(format(fieldName))
+                            .append(" | ").append(format(fieldType))
+                            .append(" | ").append(isNonNull ? NON_NULL : CAN_BE_NULL)
+                            .append(" | ").append(format(fieldDescription))
+                            .append(" |\n");
                     if (!isPrimitive(fieldType)) {
                         needParseTypes.add(field.getCommonType());
                     }
@@ -245,5 +262,10 @@ public class GenerateJavaDocUtil5 {
         }
         str = str.replaceAll("\n", " ").trim();
         return "`" + str + "`";
+    }
+
+    private static Boolean isParamRequired(FieldDeclaration field) {
+        return field.getAnnotations().stream()
+                .anyMatch(annotation -> NON_NULL_CLASS_NAMES.contains(annotation.getNameAsString()));
     }
 }
